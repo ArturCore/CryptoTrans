@@ -1,0 +1,6 @@
+@CryptoTrans_HostAddress = http://localhost:5210
+
+GET {{CryptoTrans_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTrans", "CryptoTrans\CryptoTrans.csproj", "{7AF3CA23-06A1-4FEA-BC43-99BF1FD6A110}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AF3CA23-06A1-4FEA-BC43-99BF1FD6A110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF3CA23-06A1-4FEA-BC43-99BF1FD6A110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF3CA23-06A1-4FEA-BC43-99BF1FD6A110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF3CA23-06A1-4FEA-BC43-99BF1FD6A110}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FBC9D63-9FFA-4ECE-B59F-FC86095F7B91}
+	EndGlobalSection
+EndGlobal
