@@ -1,4 +1,6 @@
 ﻿using CryptoTrans.Configurations;
+using CryptoTrans.Interfaces.Managers;
+using CryptoTrans.Managers;
 using Microsoft.Extensions.Options;
 using WebSocketSharp;
 
@@ -18,11 +20,15 @@ namespace CryptoTrans.Services
         private readonly string? _testNetUrl;
         private readonly string? _accountStreamUrl;
 
-        public BinanceSocketService(IOptions<BinanceSettings> options)
-        {
-            _lastMessageReceived = DateTime.Now;
+        private ISocketManager _socketManager;
 
-            _socket = new WebSocket(options.Value.StreamUrl);
+        public BinanceSocketService(IOptions<BinanceSettings> options, ISocketManager socketManager)
+        {
+            _socketManager = socketManager;
+
+
+
+            _lastMessageReceived = DateTime.Now;
             _fileService = new FileService();
             _cts = new CancellationTokenSource();
 
@@ -34,18 +40,18 @@ namespace CryptoTrans.Services
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            SetWebhook();
-            //SetAccountWebhook();
-            while (!_cts.IsCancellationRequested && !stoppingToken.IsCancellationRequested)
-            {
-                if ((DateTime.Now - _lastMessageReceived).TotalSeconds > 10)
-                {
-                    Console.WriteLine("No messages received for 10 seconds. Closing WebSocket.");
-                    _socket.Close();
-                }
+            //SetWebhook();
+            SetAccountWebhook();
+            //while (!_cts.IsCancellationRequested && !stoppingToken.IsCancellationRequested)
+            //{
+            //    if ((DateTime.Now - _lastMessageReceived).TotalSeconds > 10)
+            //    {
+            //        Console.WriteLine("No messages received for 10 seconds. Closing WebSocket.");
+            //        _socket.Close();
+            //    }
 
-                await Task.Delay(1000, stoppingToken);
-            }
+            //    await Task.Delay(1000, stoppingToken);
+            //}
         }
 
         private void SetWebhook()

@@ -1,24 +1,20 @@
-﻿using CryptoTrans.Interfaces;
+﻿using CryptoTrans.Interfaces.Services;
 using Microsoft.Extensions.Options;
 using WebSocketSharp;
 
 namespace CryptoTrans.Services
 {
-    public class SocketService : ISockerService
+    public class SocketService : ISocketService
     {
-        public SocketService(IOptions<SocketService> options) 
-        { 
-            
-        }
-        public WebSocket ConnectPermanentWebsocker(string streamUrl)
+        public WebSocket Connect(string streamUrl)
         {
             WebSocket webSocket = new(streamUrl);
             return webSocket;
         }
 
-        public WebSocket ConnectTemporaryWebsocker(string streamUrl)
+        public void Close(WebSocket webSocket)
         {
-            throw new NotImplementedException();
+            webSocket.Close();
         }
     }
 }

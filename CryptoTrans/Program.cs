@@ -1,4 +1,7 @@
 using CryptoTrans.Configurations;
+using CryptoTrans.Interfaces.Managers;
+using CryptoTrans.Interfaces.Services;
+using CryptoTrans.Managers;
 using CryptoTrans.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
+
+builder.Services.AddSingleton<ISocketService, SocketService>();
+builder.Services.AddTransient<ISocketManager, SocketManager>();
 
 builder.Services.Configure<BinanceSettings>(builder.Configuration.GetSection("Binance"));
 
