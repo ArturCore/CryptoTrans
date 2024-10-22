@@ -20,7 +20,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHostedService<BinanceSocketService>();
+builder.Services.AddHostedService<BinanceOrderBookService>();
 
 var app = builder.Build();
 app.UseSwagger();
